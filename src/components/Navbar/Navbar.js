@@ -4,33 +4,50 @@ import BoardColumn from "../BoardColumn/BoardColumn";
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { count: 0 };
+    this.addColumn = this.addColumn.bind(this);
+    this.state = {
+      newItem: "",
+      list: [],
+    };
+  }
+  updateInput(key, value) {
+    this.setState({ [key]: value });
+  }
+  addColumn() {
+    const newItem = {
+      id: 1 + Math.random(),
+      value: this.state.newItem,
+    };
+
+    const list = [...this.state.list];
+    list.push(newItem);
+    console.log(list);
+    this.setState({
+      list,
+      newItem: "",
+    });
   }
   render() {
     return (
       <div>
-        <h1> Burası Navbar!!!</h1>
-        <label>Kolon sayısı giriniz</label>
+        <input
+          type="text"
+          placeholder="kolon ismi giriniz"
+          value={this.state.newItem}
+          onChange={(e) => this.updateInput("newItem", e.target.value)}
+        ></input>
+        <button onClick={this.addColumn}>+</button>
 
-        <div>{this.state.count}</div>
-
-        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
-          Count Up
-        </button>
-        <button
-          onClick={() => {
-            if (this.state.count === 0) {
-              this.setState({ count: 0 });
-              console.log("0 oldu ");
-              alert("kolon sayısı 0'ın altına inemez");
-            } else {
-              this.setState({ count: this.state.count - 1 });
-            }
-          }}
-        >
-          Count Down
-        </button>
-        <BoardColumn count={this.state.count} />
+        
+        <ul>
+          {this.state.list.map((item) => {
+            return (
+              <li key={item.id}>
+                <BoardColumn list={item.value} />
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }
