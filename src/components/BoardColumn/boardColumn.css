@@ -1,0 +1,25 @@
+.boardColumn {
+  width: 250px;
+
+  background-color: #333;
+  border-radius: 5px;
+  margin: 20px 10px;
+}
+
+.boardColumn-header {
+  color: white;
+  font-size: 1.6rem;
+  text-align: center;
+  padding: 10px;
+  font-weight: 400;
+}
+.boardColumn-card-ul {
+  margin: 5px;
+  background-color: #333;
+}
+.boardColumn-card-label {
+  color: white;
+  text-align: center;
+}
+.boardColumn-card-button {
+}

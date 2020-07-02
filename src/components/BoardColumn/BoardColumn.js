@@ -1,5 +1,6 @@
 import React from "react";
 import Cards from "../Cards/Cards";
+import "./boardColumn.css";
 
 class BoardColumn extends React.Component {
   constructor(props) {
@@ -23,11 +24,10 @@ class BoardColumn extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>BoardColumn</h1>
-        <h2>{this.props.list}</h2>
+      <div className="boardColumn">
+        <h1 className="boardColumn-header">{this.props.list}</h1>
 
-        <ul>
+        <ul className="boardColumn-card-ul">
           {this.state.list.map((item) => {
             return (
               <li key={item.id}>
@@ -38,8 +38,12 @@ class BoardColumn extends React.Component {
         </ul>
         <br />
         <br />
-        <label>Kart ekle</label>
-        <button onClick={this.addCard}>+</button>
+        <div className="boardColumn-card">
+          <label className="boardColumn-card-label">Kart ekle</label>
+          <button className="boardColumn-card-button" onClick={this.addCard}>
+            +
+          </button>
+        </div>
       </div>
     );
   }
