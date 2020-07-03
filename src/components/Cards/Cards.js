@@ -46,7 +46,7 @@ class Cards extends React.Component {
       <div className="cards">
         <div>
           <h3>Cards</h3>
-          <input type="text"></input>
+          <textarea></textarea>
           <img src={this.state.image} alt="" width="60" height="60"></img>
         </div>
 
@@ -55,6 +55,8 @@ class Cards extends React.Component {
         <button onClick={this.decPriorty}>-</button>
         <label>{this.state.priorty}</label>
         <button onClick={this.incPriorty}>+</button>
+
+       
       </div>
     );
   }
